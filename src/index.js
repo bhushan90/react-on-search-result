@@ -115,10 +115,6 @@ function OnSearchResult(props) {
   }
 
   const isOptionSelected = (option) => {
-    if (selectedRecords && selectedRecords.length > 0) {
-      // if(option[itemId] === -1 && data.filter(v => v[itemId] !== -1).length === selectedRecords.length) {
-      //   return true;
-      // }
       return (
         selectedRecords.filter((v) => v[itemId] === option[itemId]).length > 0
       )
@@ -205,95 +201,93 @@ function OnSearchResult(props) {
   }, [data])
 
   return (
-    <>
-      <ClickAwayListener onClickAway={closePoper}>
-        <Box ref={wrapperRef}>
-          <Input
-            readOnly
-            fullWidth={fullWidth}
-            inputComponent={renderInputComponent}
-            endAdornment={
-              <InputAdornment>
-                {loading && (
-                  <CircularProgress
-                    size={16}
-                    color='primary'
-                    style={{ marginRight: '1em' }}
-                  />
-                )}
-                {(!!keyword ||
-                  (selectedRecords && selectedRecords.length > 0)) && (
-                  <ButtonBase
-                    centerRipple
-                    tabIndex={-1}
+    <ClickAwayListener onClickAway={closePoper}>
+      <Box ref={wrapperRef}>
+        <Input
+          readOnly
+          fullWidth={fullWidth}
+          inputComponent={renderInputComponent}
+          endAdornment={
+            <InputAdornment>
+              {loading && (
+                <CircularProgress
+                  size={16}
+                  color='primary'
+                  style={{ marginRight: '1em' }}
+                />
+              )}
+              {(!!keyword ||
+                (selectedRecords && selectedRecords.length > 0)) && (
+                <ButtonBase
+                  centerRipple
+                  tabIndex={-1}
+                  onClick={() => {
+                    handlClearFilter()
+                  }}
+                >
+                  <ClearIcon />
+                </ButtonBase>
+              )}
+            </InputAdornment>
+          }
+          inputProps={{
+            style: {
+              display: 'flex',
+              flexWrap: 'wrap'
+            }
+          }}
+        />
+        <Popper
+          popperRef={outerWrapper}
+          className={classes.popOver}
+          style={{
+            minWidth: wrapperRef.current
+              ? wrapperRef.current.getBoundingClientRect().width
+              : undefined
+          }}
+          open={openOver}
+          anchorEl={wrapperRef.current}
+        >
+          <Paper elevation={1}>
+            {records && records.length > 0 ? (
+              <MenuList>
+                {records.map((v) => (
+                  <MenuItem
+                    key={v[itemId]}
                     onClick={() => {
-                      handlClearFilter()
+                      handleClickItem(v)
                     }}
                   >
-                    <ClearIcon />
-                  </ButtonBase>
-                )}
-              </InputAdornment>
-            }
-            inputProps={{
-              style: {
-                display: 'flex',
-                flexWrap: 'wrap'
-              }
-            }}
-          />
-          <Popper
-            popperRef={outerWrapper}
-            className={classes.popOver}
-            style={{
-              minWidth: wrapperRef.current
-                ? wrapperRef.current.getBoundingClientRect().width
-                : undefined
-            }}
-            open={openOver}
-            anchorEl={wrapperRef.current}
-          >
-            <Paper elevation={1}>
-              {records && records.length > 0 ? (
-                <MenuList>
-                  {records.map((v) => (
-                    <MenuItem
-                      key={v[itemId]}
-                      onClick={() => {
-                        handleClickItem(v)
-                      }}
-                    >
-                      {multiple && (
-                        <Icon>
-                          {isOptionSelected(v) ? (
-                            <CheckBoxIcon
-                              className={
-                                customStyles.checkBox || classes.checkBox
-                              }
-                              style={{ marginRight: '0.5em' }}
-                            />
-                          ) : (
-                            <CheckBoxOutlineBlankOutlinedIcon
-                              style={{ marginRight: '0.5em' }}
-                              className={customStyles.checkBox}
-                            />
-                          )}
-                        </Icon>
-                      )}
-                      {v[itemLabel]}
-                    </MenuItem>
-                  ))}
-                </MenuList>
-              ) : (
-                !!keyword && (
-                  <span className={classes.noRecordFound}>{notFoundText}</span>
-                )
-              )}
-            </Paper>
-          </Popper>
-        </Box>
-      </ClickAwayListener>
-    </>
+                    {multiple && (
+                      <Icon>
+                        {isOptionSelected(v) ? (
+                          <CheckBoxIcon
+                            className={
+                              customStyles.checkBox || classes.checkBox
+                            }
+                            style={{ marginRight: '0.5em' }}
+                          />
+                        ) : (
+                          <CheckBoxOutlineBlankOutlinedIcon
+                            style={{ marginRight: '0.5em' }}
+                            className={customStyles.checkBox}
+                          />
+                        )}
+                      </Icon>
+                    )}
+                    {v[itemLabel]}
+                  </MenuItem>
+                ))}
+              </MenuList>
+            ) : (
+              !!keyword && (
+                <span className={classes.noRecordFound}>{notFoundText}</span>
+              )
+            )}
+          </Paper>
+        </Popper>
+      </Box>
+    </ClickAwayListener>
   )
 }
 
