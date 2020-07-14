@@ -114,13 +114,8 @@ function OnSearchResult(props) {
     onInputKeywordChange(keywords)
   }
 
-  const isOptionSelected = (option) => {
-      return (
-        selectedRecords.filter((v) => v[itemId] === option[itemId]).length > 0
-      )
-    }
-    return false
-  }
+  const isOptionSelected = (option) =>
+    selectedRecords.filter((v) => v[itemId] === option[itemId]).length > 0
 
   const handleDeleteItem = (item) => {
     const filteredOptions = selectedRecords.filter(
@@ -194,9 +189,9 @@ function OnSearchResult(props) {
   }
 
   useEffect(() => {
-    if (data.length > 0) {
+    // if (data.length > 0) {
       setOpenOver(true)
-    }
+    // }
     setRecords(data)
   }, [data])
 
