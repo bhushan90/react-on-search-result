@@ -189,9 +189,7 @@ function OnSearchResult(props) {
   }
 
   useEffect(() => {
-    // if (data.length > 0) {
-      setOpenOver(true)
-    // }
+    setOpenOver(true)
     setRecords(data)
   }, [data])
 

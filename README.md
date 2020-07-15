@@ -1,6 +1,6 @@
-# on-search
+# react-on-search-result
 
-> searches the etches[Cor[Cds on search
+>"Seraches the records on the based on provided keyword",
 
 [![NPM](https://img.shields.io/npm/v/on-search.svg)](https://www.npmjs.com/package/on-search) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 

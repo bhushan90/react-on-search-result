@@ -1,7 +1,7 @@
 {
-  "name": "on-search",
+  "name": "on-search-result",
   "version": "1.0.0",
-  "description": "searches the etches[Cor[Cds on search",
+  "description": "Seraches the records on the based on provided keyword",
   "author": "Bhushan Dhage",
   "license": "MIT",
   "repository": "Bhushan Dhage/on-search",
@@ -50,6 +50,9 @@
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1"
   },
+  "keywords": [
+    "react-dropdown", "react-material-dropdown", "react-material-on-saerch-result", "react-material-on-saerch-result"
+  ],
   "files": [
     "dist"
   ]
