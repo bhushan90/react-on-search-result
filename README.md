@@ -1,6 +1,6 @@
 # react-on-search-result
 
->"Seraches the records on the based on provided keyword",
+>"It is simple dropdown like package. Where you can get results on search",
 
 [![NPM](https://img.shields.io/npm/v/on-search.svg)](https://www.npmjs.com/package/on-search) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -10,12 +10,12 @@
 npm install react-on-search-result --save
 ```
 ## Demo
-Will add asap
+[here](https://stackblitz.com/edit/react-nrp7vw/)
 ## Usage
 ### Multi select
 ```jsx
 import React, { Component } from 'react'
-import OnSearchResult from 'on-search'
+import OnSearchResult from 'on-search-result'
 
 class Example extends Component {
   render() {
@@ -38,7 +38,7 @@ class Example extends Component {
 ### Single select
 ```jsx
 import React, { Component } from 'react'
-import OnSearchResult from 'on-search'
+import OnSearchResult from 'on-search-result'
 
 class Example extends Component {
   render() {

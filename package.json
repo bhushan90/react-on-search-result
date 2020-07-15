@@ -51,7 +51,7 @@
     "react-scripts": "^3.4.1"
   },
   "keywords": [
-    "react-dropdown", "react-material-dropdown", "react-material-on-saerch-result", "react-material-on-saerch-result"
+    "react-dropdown", "react-material-dropdown", "react-material-on-search-result", "react-material-on-search-result"
   ],
   "files": [
     "dist"
